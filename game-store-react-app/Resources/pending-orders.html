@@ -1,0 +1,54 @@
+<body>
+  <div id="root">
+    <div class="App">
+      <header>
+        <nav class="navbar-menu"><a href="/">Book Store</a><a href="/">Home</a><a href="/store">Store</a><a href="/admin/create">Create
+            New Book</a><a href="/admin/orders/pending" class="active" aria-current="page">Pending Orders</a><a href="javascript:void(0)">Logout</a></nav>
+      </header>
+      <main>
+        <div class="container" style="padding-top: 25px;">
+          <h1 class="text-center">Pending Orders</h1>
+          <div class="row" style="padding-top: 25px;">
+            <div class="col-md-12" id="customer-orders">
+              <div class="box">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Order</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>View</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>#1</th>
+                        <td>27.02.2019 г., 16:55:02 ч.</td>
+                        <td>$ 10.00</td>
+                        <td><span class="label label-info">Pending</span></td>
+                        <td><a class="btn btn-outline-warning btn-sm" href="/orders/details/5c76a4c6157aaa2c6084dc55">View</a></td>
+                        <td><button class="btn btn-outline-success btn-sm">Approve</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <div>
+        <footer id="footer" class="page-footer mt-4">© Book Library 2019</footer>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/static/js/bundle.js"></script>
+  <div id="toast-container" class="toast-top-right">
+    <div class="toast toast-success" aria-live="polite" style="opacity: 0.0801261;">
+      <div class="toast-message">Login successful</div>
+    </div>
+  </div>
+</body>

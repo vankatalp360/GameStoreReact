@@ -1,0 +1,48 @@
+<body>
+  <div id="root">
+    <div class="App">
+      <header>
+        <nav class="navbar-menu"><a href="/">Book Store</a><a href="/">Home</a><a href="/store">Store</a><a href="/orders"
+            class="active" aria-current="page">My Orders</a><a href="/cart">Cart</a><a href="javascript:void(0)">Logout</a></nav>
+      </header>
+      <main>
+        <div class="container" style="padding-top: 25px;">
+          <h1 class="text-center">My Orders</h1>
+          <div class="row" style="padding-top: 25px;">
+            <div class="col-md-12" id="customer-orders">
+              <div class="box">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Order</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>View</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>#1</th>
+                        <td>27.02.2019 г., 16:46:02 ч.</td>
+                        <td>$ 5.00</td>
+                        <td><span class="label label-info">Approved</span></td>
+                        <td><a class="btn btn-outline-warning btn-sm" href="/orders/details/5c76a2aa157aaa2c6084dc54">View</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <div>
+        <footer id="footer" class="page-footer mt-4">© Book Library 2019</footer>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/static/js/bundle.js"></script>
+
+</body>

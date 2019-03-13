@@ -1,0 +1,55 @@
+<body>
+  <div id="root">
+    <div class="App">
+      <header>
+        <nav class="navbar-menu"><a href="/">Book Store</a><a href="/">Home</a><a href="/store">Store</a><a href="/orders">My
+            Orders</a><a href="/cart" class="active" aria-current="page">Cart</a><a href="javascript:void(0)">Logout</a></nav>
+      </header>
+      <main>
+        <div class="container">
+          <table id="cart" class="table table-hover table-condensed">
+            <thead>
+              <tr>
+                <th style="width: 50px;">Product</th>
+                <th style="width: 10px;">Price</th>
+                <th class="text-center" style="width: 22px;">Subtotal</th>
+                <th style="width: 10px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-th="Product">
+                  <div class="row">
+                    <div class="col-sm-4 hidden-xs"><img src="https://images-na.ssl-images-amazon.com/images/I/51fonMmNpnL.jpg"
+                        alt="..." class="cart-image"></div>
+                    <div class="col-sm-8">
+                      <h4 class="nomargin">Harry Potter</h4>
+                      <p>fantasy, adventure, kids</p>
+                    </div>
+                  </div>
+                </td>
+                <td data-th="Price">$10.00</td>
+                <td data-th="Subtotal" class="text-center">$10.00</td>
+                <td class="actions" data-th=""><button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button><button
+                    class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><a class="btn btn-warning" href="/store"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+                <td colspan="2" class="hidden-xs"></td>
+                <td class="hidden-xs text-center"><strong>Total $10.00</strong></td>
+                <td><button class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></button></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </main>
+      <div>
+        <footer id="footer" class="page-footer mt-4">© Book Library 2019</footer>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/static/js/bundle.js"></script>
+
+</body>
