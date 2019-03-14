@@ -46,11 +46,12 @@ class Login extends Component {
                 window.localStorage.setItem('auth_token', result.token);
                 window.localStorage.setItem('user', JSON.stringify({
                     ...result.user,
-                    isLoggedIn: true
+                    isLoggedIn: true,
+                    isAdmin: (result.user.roles[0] === "Admin")
                 }));
-
                 updateUser({
                     isLoggedIn: true,
+                    isAdmin: (result.user.roles[0] === "Admin"),
                     ...result.user
                 });
     

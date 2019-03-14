@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { NavLink, Link, Switch } from 'react-router-dom';
 import { UserConsumer } from '../components/contexts/user-context';
 
-const Header = ({ isLoggedIn, logout }) => {
+const Header = ({ isLoggedIn, isAdmin, logout }) => {
     return (
         <header>
             <nav className="navbar-menu">
@@ -13,8 +13,17 @@ const Header = ({ isLoggedIn, logout }) => {
                     ? 
                     <Fragment>
                         <NavLink to="/store" activeClassName="active">Store</NavLink>
-                        <NavLink to="/orders" activeClassName="active">My Orders</NavLink>
-                        <NavLink to="/cart" activeClassName="active">Cart</NavLink>
+                        {isAdmin
+                        ?
+                        <Fragment>
+                            <NavLink to="/admin/create" activeClassName="active">Create New Game</NavLink>
+                            <NavLink to="/admin/orders/pending" activeClassName="active">Pending Orders</NavLink>
+                        </Fragment>
+                        :
+                        <Fragment>
+                            <NavLink to="/orders" activeClassName="active">My Orders</NavLink>
+                            <NavLink to="/cart" activeClassName="active">Cart</NavLink>
+                        </Fragment>}
                         <NavLink to='/' onClick={logout}>Logout</NavLink>
                     </Fragment>
                     : 
@@ -32,8 +41,8 @@ const HeaderWithContext = (props) => {
     return (
         <UserConsumer>
             {
-                ({ isLoggedIn }) => (
-                    <Header {...props} isLoggedIn={isLoggedIn} />
+                ({ isLoggedIn, isAdmin }) => (
+                    <Header {...props} isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
                 )
             }
         </UserConsumer>

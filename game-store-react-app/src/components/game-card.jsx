@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const GameCard = ({ id, imageUrl, title, description }) => {
+const GameCard = ({ id, images, title, description }) => {
     return (
         <div className="card col-4">
             <img className="card-img-top card-image" 
-                src={imageUrl}
+                src={images[0]}
                 alt={title}
             />
             <div className="card-body">

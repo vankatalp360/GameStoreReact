@@ -7,6 +7,8 @@ import Header from './components/header'
 import Footer from './components/footer'
 import Home from './views/home'
 import Login from './views/login'
+import CreateGame from './views/create-game'
+import Register from './views/register'
 import NotFound from './views/not-found';
 
 import './App.css';
@@ -52,6 +54,8 @@ class App extends Component {
                 <Switch>
                   <Route path="/" exact component={Home} />
                   <Route path="/login" exact component={Login} />
+                  <Route path="/register" exact component={Register} />
+                  <Route path="/admin/create" exact component={CreateGame} />
                   {/* <AuthorizedRoute path="/create" exact component={CreateGame} /> */}
                   <Route component={NotFound}/>
                 </Switch>
