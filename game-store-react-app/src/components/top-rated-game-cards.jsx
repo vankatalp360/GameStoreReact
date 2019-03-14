@@ -38,7 +38,7 @@ class TopRatedGameCards extends Component {
                     <div className="card-deck space-top">
                         {
                             games.map(game => (
-                                <GameCard key={game.id} {...game} />
+                                <GameCard key={game._id} game={game} />
                             ))
                         }
                     </div>

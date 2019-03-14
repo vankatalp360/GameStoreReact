@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import LandingMessage from "../components/landing-message";
 import TopRatedGameCards from "../components/top-rated-game-cards";
+import { UserConsumer } from "../components/contexts/user-context";
 
-class Home extends Component {
-    render() {
-        return (
+const Home = ({ username }) => {
+    return (
             <main>
                 <div className="welcome-wrapper">
-                    <LandingMessage message="Welcome to our book store, tanya!">
+                    <LandingMessage message={`Welcome to our book store, ${username}!`}>
                         <p>
                             <Link to="/store">Go To Store</Link>
                             <Link to="/orders">View your orders</Link>
@@ -17,8 +17,19 @@ class Home extends Component {
                     <TopRatedGameCards />
                 </div>
             </main>
-        )
-    }
+    )
+ }
+
+ const HomeWithContext = (props) => {
+    return (
+        <UserConsumer>
+            {
+                ({ username }) => (
+                    <Home {...props} username={username} />
+                )
+            }
+        </UserConsumer>
+    )
 }
 
-export default Home;
+export default HomeWithContext;

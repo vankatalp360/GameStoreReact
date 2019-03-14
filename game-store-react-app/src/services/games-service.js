@@ -5,6 +5,7 @@ class GamesService {
         this.baseUrl = 'http://localhost:5000/game';
         this.allGamesUrl = `${this.baseUrl}/all`
         this.createGameUrl = `${this.baseUrl}/create`
+        this.detailsGame = `${this.baseUrl}/details/`
     }
 
     getTopRatedGames() {
@@ -14,6 +15,7 @@ class GamesService {
     create(credentials) {
         return post(this.createGameUrl, credentials);
     }
+    
 }
 
 export default GamesService;
