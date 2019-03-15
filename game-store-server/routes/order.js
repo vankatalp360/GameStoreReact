@@ -5,10 +5,9 @@ const Order = require('../models/Order')
 const router = new express.Router()
 
 router.post('/submit', authCheck, (req, res) => {
-  const products = req.body
   let orderObj = {
-    creator: req.user._id,
-    products
+    creator: req.body.pop(),
+    products = req.body
   }
 
   Order

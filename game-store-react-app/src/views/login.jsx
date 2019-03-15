@@ -49,6 +49,7 @@ class Login extends Component {
                     isLoggedIn: true,
                     isAdmin: (result.user.roles[0] === "Admin")
                 }));
+                
                 updateUser({
                     isLoggedIn: true,
                     isAdmin: (result.user.roles[0] === "Admin"),

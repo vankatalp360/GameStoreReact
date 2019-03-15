@@ -110,12 +110,12 @@ router.post('/login', (req, res, next) => {
         message: 'Could not process the form.'
       })
     }
-
+    
     return res.json({
       success: true,
       message: 'You have successfully logged in!',
       token,
-      user: userData
+      user: userData,
     })
   })(req, res, next)
 })

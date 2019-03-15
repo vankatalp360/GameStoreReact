@@ -2,6 +2,7 @@ import { createContext } from 'react';
 
 const defaultUserState = { 
     roles: [], 
+    id: '',
     username: '', 
     isLoggedIn: false, 
     isAdmin: false,

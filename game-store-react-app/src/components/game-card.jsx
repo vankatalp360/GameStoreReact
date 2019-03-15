@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import GamesService from '../services/games-service'
 
 class GameCard extends Component {
     addToCart = () => {
         const { game } = this.props;
 
-        let gamesAsJson = window.localStorage.getItem("games") || JSON.stringify([]);
-        const games = JSON.parse(gamesAsJson);
-        games.push(game);
-        window.localStorage.setItem("games", JSON.stringify(games));
+        GameCard.service.addToCart(game);
     }
+    static service = new GamesService();
     
     render () {
         const { game } = this.props;
