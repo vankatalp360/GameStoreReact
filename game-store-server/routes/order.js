@@ -6,8 +6,8 @@ const router = new express.Router()
 
 router.post('/submit', authCheck, (req, res) => {
   let orderObj = {
-    creator: req.body.pop(),
-    products = req.body
+    creator: req.user._id,
+    products: req.body
   }
 
   Order

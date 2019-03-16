@@ -32,6 +32,10 @@ class GamesService {
 
         return true;
     }
+
+    emptyCart = () => {
+        window.localStorage.removeItem("games");
+    }
 }
 
 export default GamesService;
