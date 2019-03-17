@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class OrderCard extends Component {
 
@@ -20,7 +20,13 @@ class OrderCard extends Component {
                 <th>#{order._id}</th>
                 <td>{order.date}</td>
                 <td>$ {orderPrice.toFixed(2)}</td>
-                <td><span className="label label-info">{order.status}</span></td>
+                <td><span className="label label-info">
+                {
+                    order.status === "Approved" 
+                    ? <strong>{order.status}</strong>
+                    : order.status
+                }
+                </span></td>
                 <td><a className="btn btn-outline-warning btn-sm" href="/orders" onClick={this.orderDetails}>View</a></td>
             </tr>
         );

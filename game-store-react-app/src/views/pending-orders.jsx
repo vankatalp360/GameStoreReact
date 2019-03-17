@@ -1,9 +1,9 @@
 import React, { Fragment, Component } from 'react';
 import OrdersService from '../services/orders-service';
-import OrderCard from '../components/order-card';
+import PendingOrder from '../components/pending-order';
 import OrderGame from '../components/order-game';
 
-class MyOrders extends Component {
+class PendingOrders extends Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -17,6 +17,14 @@ class MyOrders extends Component {
         this.setState({
             order
         });
+    }
+
+    approveOrder = async (order) => {
+        await PendingOrders.OrdersService.approveOrder(order._id);
+        this.setState({
+            order: {}
+        });
+        this.componentDidMount();
     }
 
     static OrdersService = new OrdersService();
@@ -36,35 +44,34 @@ class MyOrders extends Component {
 
         return (
             <Fragment>
-                <div className="container" style={{paddingTop: "25px"}}>
-                <h1 className="text-center">My Orders</h1>
-                <div className="row" style={{paddingTop: "25px"}}>
-                    <div className="col-md-12" id="customer-orders">
-                    <div className="box">
-                        <div className="table-responsive">
-                        <table className="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>Order</th>
-                                <th>Date</th>
-                                <th>Total</th>
-                                <th>Status</th>
-                                <th>View</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {
-                                orders.map(order => (
-                                    <OrderCard key={order._id} order={order} orderDetails={this.orderDetails}/>
-                                ))
-                            }
-                            </tbody>
-                        </table>
+                <div className="container" style={{paddingTop: "25px;"}}>
+                    <h1 className="text-center">Pending Orders</h1>
+                    <div className="row" style={{paddingTop: "25px;"}}>
+                        <div className="col-md-12" id="customer-orders">
+                        <div className="box">
+                            <div className="table-responsive">
+                            <table className="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>View</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {orders.map(order => (
+                                    <PendingOrder key={order._id} order={order} orderDetails={this.orderDetails} approveOrder={this.approveOrder}/>
+                                ))}
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
                         </div>
                     </div>
                     </div>
-                </div>
-                </div>
 
                 {
                     order.hasOwnProperty("_id") 
@@ -107,8 +114,7 @@ class MyOrders extends Component {
 
     async componentDidMount() {
         try {
-            const orders = await MyOrders.OrdersService.getUserOrders();
-            console.log(orders);
+            const orders = await PendingOrders.OrdersService.getPendingOrders();
 
             this.setState({ orders });
         } catch (error) {
@@ -118,4 +124,4 @@ class MyOrders extends Component {
 };
 
 
-export default MyOrders;
+export default PendingOrders;

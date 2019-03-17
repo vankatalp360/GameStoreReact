@@ -1,11 +1,12 @@
-import { get, post } from '../data/crud'
+import { get, post, remove } from '../data/crud'
 
 class GamesService {
     constructor() {
         this.baseUrl = 'http://localhost:5000/game';
         this.allGamesUrl = `${this.baseUrl}/all`
         this.createGameUrl = `${this.baseUrl}/create`
-        this.detailsGame = `${this.baseUrl}/details/`
+        this.editGameUrl = `${this.baseUrl}/edit/`
+        this.deleteGameUrl = `${this.baseUrl}/delete/`
     }
 
     getTopRatedGames() {
@@ -16,6 +17,14 @@ class GamesService {
         return post(this.createGameUrl, credentials);
     }
     
+    edit(id, credentials) {
+        return post(`${this.editGameUrl}${id}`, credentials,);
+    }
+    
+    delete(id, credentials) {
+        return remove(`${this.deleteGameUrl}${id}`, credentials);
+    }
+
     addToCart = (game) => {
         let gamesAsJson = window.localStorage.getItem("games") || JSON.stringify([]);
         const games = JSON.parse(gamesAsJson);

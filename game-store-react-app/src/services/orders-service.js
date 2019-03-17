@@ -5,7 +5,7 @@ class OrdersService {
         this.baseUrl = 'http://localhost:5000/orders';
         this.createOrderUrl = `${this.baseUrl}/submit`
         this.getUserOrdersUrl = `${this.baseUrl}/user`
-        this.getAllPendigOrdersUrl = `${this.baseUrl}/pending`
+        this.getPendigOrdersUrl = `${this.baseUrl}/pending`
         this.approveOrderUrl = `${this.baseUrl}/approve`
     }
 
@@ -13,8 +13,16 @@ class OrdersService {
         return get(this.getUserOrdersUrl, credentials);
     }
 
-    createOrder(credentials, user) {
+    createOrder(credentials) {
         return post(this.createOrderUrl, credentials);
+    }
+    
+    approveOrder(orderId, credentials) {
+        return post(`${this.approveOrderUrl}/${orderId}`, credentials);
+    }
+
+    getPendingOrders(credentials) {
+        return get(this.getPendigOrdersUrl, credentials);
     }
 }
 

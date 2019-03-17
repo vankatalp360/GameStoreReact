@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import GameService from '../services/games-service'
 
-class CreateGame extends Component {
+class DeleteGame extends Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -15,7 +15,7 @@ class CreateGame extends Component {
             description: '',
             price: '',
             imagesAsText: '',
-            isCreated: false,
+            isLoading: false,
             error: ''
         }
     }
@@ -51,12 +51,13 @@ class CreateGame extends Component {
                 price,
                 images: imagesAsText.split(/[\s,]+/g)
         }
+        const id = this.props.match.params.id;
 
         this.setState({
             error: ''
         }, async () => {
             try {
-                const result = await CreateGame.service.create(credentials);
+                const result = await DeleteGame.service.delete(id, credentials);
     
                 if (!result.success) {
                     const errors = Object.values(result.errors).join(' ');
@@ -92,11 +93,12 @@ class CreateGame extends Component {
                     ? <div>Something went wrong: {error}</div>
                     : null
             }
-                <h1>Create New Game</h1>
+                <h1>Are you sure you want to delete <strong>{title}</strong>?</h1>
                 <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="title">Title</label>
                     <input 
+                        disabled
                         type="text" 
                         name="title" 
                         id="title"
@@ -107,6 +109,7 @@ class CreateGame extends Component {
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
                     <input 
+                        disabled
                         type="text" 
                         name="description" 
                         id="description"
@@ -117,6 +120,7 @@ class CreateGame extends Component {
                 <div className="form-group">
                     <label htmlFor="genresAsText">Genres</label>
                     <input 
+                        disabled
                         type="text" 
                         name="genresAsText" 
                         id="genresAsText"
@@ -127,6 +131,7 @@ class CreateGame extends Component {
                 <div className="form-group">
                     <label htmlFor="languages">Languages</label>
                     <input 
+                        disabled
                         type="text" 
                         name="languagesAsText" 
                         id="languagesAsText"
@@ -137,6 +142,7 @@ class CreateGame extends Component {
                 <div className="form-group">
                     <label htmlFor="images">Images</label>
                     <input 
+                        disabled
                         type="text" 
                         name="imagesAsText" 
                         id="imagesAsText"
@@ -147,6 +153,7 @@ class CreateGame extends Component {
                 <div className="form-group">
                     <label htmlFor="developer">Developer</label>
                     <input 
+                        disabled
                         type="text" 
                         name="developer"
                         id="developer" 
@@ -157,6 +164,7 @@ class CreateGame extends Component {
                 <div className="form-group">
                     <label htmlFor="trailer">Trailer</label>
                     <input 
+                        disabled
                         type="text" 
                         name="trailer" 
                         id="trailer"
@@ -167,6 +175,7 @@ class CreateGame extends Component {
                 <div className="form-group">
                     <label htmlFor="publisher">Publisher</label>
                     <input 
+                        disabled
                         type="text" 
                         name="publisher" 
                         id="publisher"
@@ -177,6 +186,7 @@ class CreateGame extends Component {
                 <div className="form-group">
                     <label htmlFor="price">Price</label>
                     <input 
+                        disabled
                         type="number" 
                         name="price" 
                         id="price"
@@ -184,12 +194,36 @@ class CreateGame extends Component {
                         value={price}
                         onChange={this.handleChange}/>
                 </div>
-                <input type="submit" value="Create"/>
+                <input type="submit" className="btn btn-danger" value="Delete"/>
                 </form>
             </div>
         );
     }
+
+    async componentDidMount() {
+        try {
+            const gameId = this.props.match.params.id;
+            const games = await DeleteGame.service.getTopRatedGames();
+            const game = games.find(game => game._id === gameId);
+            
+            this.setState({
+                    title: game.title,
+                    genresAsText: game.genres.join(", "),
+                    developer: game.developer,
+                    trailer: game.trailer,
+                    publisher: game.publisher,
+                    languagesAsText: game.languages.join(", "),
+                    description: game.description,
+                    price: game.price,
+                    imagesAsText: game.images.join(", "),
+                    isLoading: false,
+                    error: ''
+                });
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 
 
-export default CreateGame;
+export default DeleteGame;

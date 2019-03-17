@@ -33,7 +33,6 @@ class TopRatedGameCards extends Component {
 
         return (
             <Fragment>
-                <h2>Top Rated</h2>
                 <div className="row">
                     <div className="card-deck space-top">
                         {
@@ -50,7 +49,7 @@ class TopRatedGameCards extends Component {
     async componentDidMount() {
         try {
             const games = await TopRatedGameCards.service.getTopRatedGames();
-
+            
             this.setState({ games });
         } catch (error) {
             console.error(error);

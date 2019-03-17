@@ -43,7 +43,6 @@ class GameDetails extends Component {
                     <Info
                         game={game}
                         username={username} />
-                        {/* <ReviewsContainer game={game} /> */}
                 </div>
             </Fragment>
         );
