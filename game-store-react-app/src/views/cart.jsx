@@ -49,14 +49,6 @@ class Cart extends Component {
 
     render() {
         const { games } = this.state;
-        if (!games.length) {
-            return (
-                <div>
-                    <br/>
-                    <h2 className="text-center">No games in your cart!</h2>    
-                </div>
-            );
-        }
         const totalAmount = games
             .reduce(function (accumulator, game) {
             return accumulator + game.price;
@@ -64,9 +56,17 @@ class Cart extends Component {
 
         return (
             <Fragment>
+                <main>
+            {!games.length
+                ?
+                <div className="white">
+                    <br/>
+                    <h2 className="text-center">No games in your cart!</h2>    
+                </div>
+                :
                 <div className="container">
-                    <table id="cart" className="table table-hover table-condensed">
-                        <thead>
+                    <table id="cart" className="table table-condensed table-borderless">
+                        <thead className="white">
                         <tr>
                             <th style={{width: "50px"}}>Product</th>
                             <th style={{width: "10px"}}>Price</th>
@@ -74,14 +74,14 @@ class Cart extends Component {
                             <th style={{width: "10px"}}></th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="white">
                             {
                                 games.map(game => (
                                     <GameCart key={game._id} game={game} removeGame={this.removeGame} />
                                 ))
                             }
                         </tbody>
-                        <tfoot>
+                        <tfoot className="white">
                         <tr>
                             <td><a className="btn btn-warning" href="/store"><i className="fa fa-angle-left"></i> Continue Shopping</a></td>
                             <td colSpan="2" className="hidden-xs"></td>
@@ -97,6 +97,8 @@ class Cart extends Component {
                         </tfoot>
                     </table>
                     </div>
+            }
+            </main>
             </Fragment>
         );
     }

@@ -30,7 +30,7 @@ function Trailer({game}) {
                             id={game._id}>
                         </iframe>
                         :
-                        <ReactPlayer url={game.trailer} playing/>
+                        <ReactPlayer controls={true} url={game.trailer} playing/>
                     }
                 </div>
             </div>

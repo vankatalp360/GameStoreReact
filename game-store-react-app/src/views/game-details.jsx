@@ -26,25 +26,29 @@ class GameDetails extends Component {
 
         if (game === undefined && !isLoading) {
             return (
-                <div>
-                    <br/>
-                    <h2>Invalid game!</h2>    
-                </div>
+                <main>
+                    <div>
+                        <br/>
+                        <h2 className="text-center white">Invalid game!</h2>    
+                    </div>
+                </main>
             );
         }
 
         return (
             <Fragment>
-                <div className='container'>
-                    <div className='row space-top m-3'>
+                <main>
+                <div className='container white'>
+                    <div className='row space-top mb-3'>
                         <div className='col-md-12'>
-                            <h1 className="text-center">{game.title}</h1>
+                            <h1 className="text-center mt-3">{game.title}</h1>
                         </div>
                     </div>
                     <Info
                         game={game}
                         username={username} />
                 </div>
+                </main>
             </Fragment>
         );
     }

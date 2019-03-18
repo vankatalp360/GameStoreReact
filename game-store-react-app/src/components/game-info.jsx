@@ -59,10 +59,10 @@ class GameInfo extends Component {
         <Fragment>
         <div className='row space-top'>
           <div className='col-md-6'>
-            <div className='card text-white'>
-              <div className='card-body bg-light'>
+            <div className='card text-white bg-dark'>
+              <div className='card-body bg-dark'>
                 <blockquote className='card-blockquote'>
-                <Carousel showThumbs={false}>
+                <Carousel showThumbs={false} useKeyboardArrows={true} infiniteLoop={true} interval={4000} autoPlay={true}>
                   {
                     game.images.map(image => (
                       <div key={image}>
