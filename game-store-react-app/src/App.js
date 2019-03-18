@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { UserProvider, defaultUserState } from './components/contexts/user-context';
 import AuthorizedRoute from './components/authorized-route'
 import AdminRoute  from './components/admin-route';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from './components/header';
 import Footer from './components/footer';
@@ -59,6 +61,7 @@ class App extends Component {
           <Fragment>
             <UserProvider value={user}>
               <Header logout={this.logout}/>
+              <ToastContainer/>
                 <Switch>
                   <Route path="/" exact component={Home} />
                   <Route path="/login" exact component={Login} />

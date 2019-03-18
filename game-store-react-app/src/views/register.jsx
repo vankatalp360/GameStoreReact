@@ -2,6 +2,7 @@ import React, { Component, createContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import AuthenticationService from '../services/authentication-service'
 import { UserConsumer } from '../components/contexts/user-context';
+import { toast } from 'react-toastify';
 
 class Register extends Component {
     constructor (props) {
@@ -53,15 +54,13 @@ class Register extends Component {
 
                     throw new Error(errors);
                 }
-
+                toast.success("You are register Successfully");
                 this.setState({
                     isRegister: true
                 })
     
             } catch (error) {
-                this.setState({
-                    error: error.message,
-                });
+                toast.error(error.toString());
             }
         });
     }

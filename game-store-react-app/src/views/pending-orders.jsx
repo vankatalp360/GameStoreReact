@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import OrdersService from '../services/orders-service';
 import PendingOrder from '../components/pending-order';
 import OrderGame from '../components/order-game';
+import { toast } from 'react-toastify';
 
 class PendingOrders extends Component {
     constructor (props) {
@@ -21,6 +22,7 @@ class PendingOrders extends Component {
 
     approveOrder = async (order) => {
         await PendingOrders.OrdersService.approveOrder(order._id);
+        toast.success(`Order ${order._id} was approveded Successfully`);
         this.setState({
             order: {}
         });
@@ -45,8 +47,8 @@ class PendingOrders extends Component {
         return (
             <Fragment>
                 <div className="container" style={{paddingTop: "25px;"}}>
-                    <h1 className="text-center">Pending Orders</h1>
-                    <div className="row" style={{paddingTop: "25px;"}}>
+                    <h1 className="text-center m-3">Pending Orders</h1>
+                    <div className="row m-3" style={{paddingTop: "25px;"}}>
                         <div className="col-md-12" id="customer-orders">
                         <div className="box">
                             <div className="table-responsive">

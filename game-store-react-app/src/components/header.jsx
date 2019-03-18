@@ -6,7 +6,7 @@ const Header = ({ isLoggedIn, isAdmin, logout }) => {
     return (
         <header>
             <nav className="navbar-menu">
-                <NavLink to="/" activeClassName="active">Book Store</NavLink>
+                <NavLink to="/" activeClassName="active">Game Store</NavLink>
                 <NavLink to="/" activeClassName="active" aria-current="page">Home</NavLink>
                 {
                     isLoggedIn

@@ -26,21 +26,19 @@ class TopRatedGameCards extends Component {
             return (
                 <div>
                     <br/>
-                    <h2>No games!</h2>    
+                    <h2 className="white">No games!</h2>    
                 </div>
             );
         }
 
         return (
             <Fragment>
-                <div className="row">
-                    <div className="card-deck space-top">
-                        {
-                            games.map(game => (
-                                <GameCard key={game._id} game={game} />
-                            ))
-                        }
-                    </div>
+                <div className="row space-top m-5">
+                {
+                    games.map(game => (
+                        <GameCard key={game._id} game={game} />
+                    ))
+                }
                 </div>
             </Fragment>
         );

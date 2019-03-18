@@ -3,6 +3,7 @@ import Info from '../components/game-info';
 import Loading from '../components/loading';
 import GamesService from '../services/games-service';
 import { UserConsumer } from "../components/contexts/user-context";
+import { toast } from 'react-toastify';
 
 class GameDetails extends Component {
     constructor (props) {
@@ -35,9 +36,9 @@ class GameDetails extends Component {
         return (
             <Fragment>
                 <div className='container'>
-                    <div className='row space-top'>
+                    <div className='row space-top m-3'>
                         <div className='col-md-12'>
-                            <h1>{game.title}</h1>
+                            <h1 className="text-center">{game.title}</h1>
                         </div>
                     </div>
                     <Info
@@ -56,7 +57,7 @@ class GameDetails extends Component {
             
             this.setState({ game, isLoading: false });
         } catch (error) {
-            console.error(error);
+            toast.error(error.toString());
         }
     }
 };

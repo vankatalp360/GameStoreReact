@@ -32,7 +32,7 @@ class Store extends Component {
                 <div className='container'>
                     <div className='row space-top'>
                         <div className='col-md-12'>
-                            <h1 className='jumbotron-heading text-center'>Store</h1>
+                            <h1 className='jumbotron-heading text-center white'>Store</h1>
                             <form onSubmit={this.submitQuery} className='form-inline md-form form-sm active-cyan active-cyan-2'>
                             <i className='fa fa-search' aria-hidden='true' />
                             <input

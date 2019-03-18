@@ -1,4 +1,5 @@
 import { get, post, remove } from '../data/crud'
+import { toast } from 'react-toastify';
 
 class GamesService {
     constructor() {
@@ -7,6 +8,8 @@ class GamesService {
         this.createGameUrl = `${this.baseUrl}/create`
         this.editGameUrl = `${this.baseUrl}/edit/`
         this.deleteGameUrl = `${this.baseUrl}/delete/`
+        this.likeGameUrl = `${this.baseUrl}/like/`
+        this.unlikeGameUrl = `${this.baseUrl}/unlike/`
     }
 
     getTopRatedGames() {
@@ -25,11 +28,21 @@ class GamesService {
         return remove(`${this.deleteGameUrl}${id}`, credentials);
     }
 
+    like(id, credentials) {
+        return post(`${this.likeGameUrl}${id}`, credentials);
+    }
+
+    unLike(id, credentials) {
+        return post(`${this.unlikeGameUrl}${id}`, credentials);
+    }
+
     addToCart = (game) => {
         let gamesAsJson = window.localStorage.getItem("games") || JSON.stringify([]);
         const games = JSON.parse(gamesAsJson);
         games.push(game);
         window.localStorage.setItem("games", JSON.stringify(games));
+        
+        toast.success(`${game.title} was added to your cart`);
     }
 
     removeFromCart = (game) => {

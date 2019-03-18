@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import GameService from '../services/games-service'
+import { toast } from 'react-toastify';
 
 class CreateGame extends Component {
     constructor (props) {
@@ -60,18 +61,15 @@ class CreateGame extends Component {
     
                 if (!result.success) {
                     const errors = Object.values(result.errors).join(' ');
-
                     throw new Error(errors);
                 }
-
+                toast.success("Game was created Successfully");
                 this.setState({
                     isCreated: true
                 });
     
             } catch (error) {
-                this.setState({
-                    error: error.message,
-                });
+                toast.error(error.toString());
             }
         });
     }
@@ -87,11 +85,6 @@ class CreateGame extends Component {
 
         return (
             <div className="form-wrapper">
-            {
-                error.length
-                    ? <div>Something went wrong: {error}</div>
-                    : null
-            }
                 <h1>Create New Game</h1>
                 <form onSubmit={this.handleSubmit}>
                 <div className="form-group">

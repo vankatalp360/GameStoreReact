@@ -12,13 +12,22 @@ body {
     font: 16px/1.5 'Montserrat', sans-serif;    
 }
 
+main {
+    background-image: url("https://textureshot.com/wp-content/uploads/2018/11/FREE-METAL-GEAR-SOLID-RISING-GAMING-BACKGROUNDS-FOR-YOUR-WEBSITE-AND.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 a {
     font-size: 20px;
     font-weight: bold;
 }
 
 img {
-    max-width: 200px;
+    width: 230px;
+    max-height: 400px;
     height: auto;
     margin: 0 auto;
 }
@@ -28,7 +37,7 @@ nav.navbar-menu {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(88, 182, 92);
+    background-color: rgb(197, 93, 7);
 }
 
 nav.navbar-menu a {
@@ -39,11 +48,11 @@ nav.navbar-menu a {
     width: 15%;
     align-items: center;
     padding: 20px 10px;
-    border: 1px solid rgb(88, 182, 92);
+    border: 1px solid rgb(197, 93, 7);
 }
 
 nav.navbar-menu a:hover {
-    color: rgb(88, 182, 92);
+    color: rgb(197, 93, 7);
     background-color: white;
 }
 
@@ -66,25 +75,25 @@ div.welcome-wrapper p{
 
 div.welcome {
     padding: 10px;
-    box-shadow: 0px 5px 10px 5px #cecece;
+    margin-bottom: 20px;
 }
 
 div.welcome a {
     padding: 10px;
-    background-color: rgb(88, 182, 92);
+    background-color: rgb(197, 93, 7);
     border-radius: 0.5em;
     outline: none;
     text-decoration: none;
     color: white;
     margin: 10px;
-    border: 2px solid rgb(88, 182, 92);
+    border: 2px solid rgb(197, 93, 7);
     
 }
 
 div.welcome a:hover {
     background-color: white;
-    color: rgb(88, 182, 92);
-    border: 2px solid rgb(88, 182, 92);
+    color: rgb(197, 93, 7);
+    border: 2px solid rgb(197, 93, 7);
 }
 
 div.welcome p {
@@ -119,7 +128,7 @@ div.welcome p {
    padding: 10px 5px;
    outline: none;
    border-radius: 0.5em;
-   border: 1px solid rgb(88, 182, 92);   
+   border: 1px solid rgb(197, 93, 7);   
    
 }
 
@@ -127,18 +136,18 @@ div.welcome p {
 .form-wrapper input[type="submit"] {
     padding: 10px 20px;
     margin: 20px;   
-    background-color: rgb(88, 182, 92);
+    background-color: rgb(197, 93, 7);
     color: white;
     border: none;
     font-size: 18px;
     font-weight: bold;
-    border: 2px solid rgb(88, 182, 92);
+    border: 2px solid rgb(197, 93, 7);
 }
 
 .form-wrapper input[type="submit"]:hover {
     background-color: white;
-    color: rgb(88, 182, 92);
-    border: 2px solid rgb(88, 182, 92);
+    color: rgb(197, 93, 7);
+    border: 2px solid rgb(197, 93, 7);
     font-size: 18px;
     font-weight: bold;
 }
@@ -148,10 +157,13 @@ footer {
     width: 100%;
     bottom: 0;
     text-align: center;
-    background-color: rgb(88, 182, 92);
+    background-color: rgb(197, 93, 7);
     padding: 10px 0;
     font-size: 18px;
     font-weight: bold;
+}
+.white {
+    color: rgb(255, 255, 255);
 }
 
 th {

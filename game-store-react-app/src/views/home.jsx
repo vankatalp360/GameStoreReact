@@ -11,7 +11,7 @@ const Home = ({ username, isLoggedIn, isAdmin }) => {
                     {
                         isLoggedIn 
                     ?
-                    <LandingMessage message={`Welcome to our book store, ${username}!`}>
+                    <LandingMessage message={`Welcome to our game store, ${username}!`}>
                         <p>
                             <Link to="/store">Go To Store</Link>  
                            { isAdmin
@@ -25,7 +25,7 @@ const Home = ({ username, isLoggedIn, isAdmin }) => {
                     :
                     null
                     }
-                    <h2>Most recent games</h2>
+                    <h2 className="white">Most recent games</h2>
                     <TopRatedGameCards />
                 </div>
             </main>

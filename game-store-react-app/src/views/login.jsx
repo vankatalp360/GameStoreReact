@@ -1,15 +1,15 @@
-import React, { Component, createContext } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import AuthenticationService from '../services/authentication-service'
 import { UserConsumer } from '../components/contexts/user-context';
+import {toast} from 'react-toastify';
 
 class Login extends Component {
     constructor (props) {
         super(props);
         this.state = {
             email: '',
-            password: '',
-            error: '',
+            password: ''
         }
     }
 
@@ -19,6 +19,7 @@ class Login extends Component {
         this.setState({
             [target.name]: target.value,
         })
+
     }
     
     handleSubmit = (event) => {
@@ -39,7 +40,6 @@ class Login extends Component {
     
                 if (!result.success) {
                     const errors = Object.values(result.errors).join(' ');
-
                     throw new Error(errors);
                 }
 
@@ -55,18 +55,19 @@ class Login extends Component {
                     isAdmin: (result.user.roles[0] === "Admin"),
                     ...result.user
                 });
+
+                toast.success("Login successful");
     
             } catch (error) {
-                this.setState({
-                    error: error.message,
-                });
+                toast.error("Invalid username or password!");
             }
         });
     }
 
     render () {
-        const { email, password, error } = this.state;
+        const { email, password } = this.state;
         const { isLoggedIn } = this.props;
+        
 
         if (isLoggedIn) {
             return (
@@ -76,11 +77,6 @@ class Login extends Component {
 
         return (
             <div className="form-wrapper">
-            {
-                error.length
-                    ? <div>Something went wrong: {error}</div>
-                    : null
-            }
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">

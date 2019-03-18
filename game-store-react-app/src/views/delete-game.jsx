@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import GameService from '../services/games-service'
+import { toast } from 'react-toastify';
 
 class DeleteGame extends Component {
     constructor (props) {
@@ -64,15 +65,14 @@ class DeleteGame extends Component {
 
                     throw new Error(errors);
                 }
+                toast.success("Game was delleted Successfully");
 
                 this.setState({
                     isCreated: true
                 });
     
             } catch (error) {
-                this.setState({
-                    error: error.message,
-                });
+                toast.error(error.toString());
             }
         });
     }
@@ -88,11 +88,6 @@ class DeleteGame extends Component {
 
         return (
             <div className="form-wrapper">
-            {
-                error.length
-                    ? <div>Something went wrong: {error}</div>
-                    : null
-            }
                 <h1>Are you sure you want to delete <strong>{title}</strong>?</h1>
                 <form onSubmit={this.handleSubmit}>
                 <div className="form-group">

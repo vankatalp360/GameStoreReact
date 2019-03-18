@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import GameService from '../services/games-service'
+import { toast } from 'react-toastify';
 
 class EditGame extends Component {
     constructor (props) {
@@ -64,15 +65,14 @@ class EditGame extends Component {
 
                     throw new Error(errors);
                 }
+                toast.success("Game was edited Successfully");
 
                 this.setState({
                     isCreated: true
                 });
     
             } catch (error) {
-                this.setState({
-                    error: error.message,
-                });
+                toast.error(error.toString());
             }
         });
     }

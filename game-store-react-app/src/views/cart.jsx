@@ -3,15 +3,14 @@ import GameCart from '../components/game-cart';
 import GamesService from '../services/games-service';
 import OrdersService from '../services/orders-service';
 import { UserConsumer } from "../components/contexts/user-context";
+import { toast } from 'react-toastify';
 
 class Cart extends Component {
     constructor (props) {
         super(props);
         this.state = {
             games: [],
-            isRemoved: false,
-            message: '',
-            error: ''
+            isRemoved: false
         }
     }
 
@@ -21,6 +20,7 @@ class Cart extends Component {
         this.setState({
             isRemoved
         });
+        toast.success("Game was successfully romeved from your cart");
         
         this.componentDidMount();
     }
@@ -34,16 +34,13 @@ class Cart extends Component {
                 const errors = Object.values(result.errors).join(' ');
                 throw new Error(errors);
             } 
-            const message = "Order was created Successfully";
+            toast.success("Order was created Successfully");
             this.setState({
-                message: message,
                 games: []
             })
             Cart.GamesService.emptyCart();
         }   catch (error) {
-            this.setState({
-                error: error.message,
-            });
+            toast.error(error.toString());
         }
     }
     
@@ -56,7 +53,7 @@ class Cart extends Component {
             return (
                 <div>
                     <br/>
-                    <h2>No games in your cart!</h2>    
+                    <h2 className="text-center">No games in your cart!</h2>    
                 </div>
             );
         }

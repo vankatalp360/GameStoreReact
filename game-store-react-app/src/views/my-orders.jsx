@@ -29,7 +29,7 @@ class MyOrders extends Component {
             return (
                 <div>
                     <br/>
-                    <h2>No orders in your list!</h2>    
+                    <h2  className="text-center">No orders in your list!</h2>    
                 </div>
             );
         }
@@ -108,7 +108,6 @@ class MyOrders extends Component {
     async componentDidMount() {
         try {
             const orders = await MyOrders.OrdersService.getUserOrders();
-            console.log(orders);
 
             this.setState({ orders });
         } catch (error) {
