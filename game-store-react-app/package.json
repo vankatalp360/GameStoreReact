@@ -10,16 +10,10 @@
     "react-dom": "^16.8.4",
     "react-medium-image-zoom": "^3.0.15",
     "react-player": "^1.9.3",
-    "react-redux": "^6.0.1",
     "react-responsive-carousel": "^3.1.47",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8",
-    "react-toastify": "^4.5.2",
-    "redux": "^4.0.1",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "standart": "^6.1.0",
-    "toastr": "^2.1.4"
+    "react-toastify": "^4.5.2"
   },
   "scripts": {
     "start": "react-scripts start",
